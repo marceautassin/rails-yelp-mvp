@@ -1,2 +1,24 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<div class="container mt-5">
+  <div class="card bg-light my-2 mx-2 p-5">
+    <div class="d-flex justify-content-between">
+      <img src="https://i.picsum.photos/id/866/400/300.jpg" alt="">
+      <div class="flex-grow-1 ">
+        <div class="text-center">
+          <h2><%= @restaurant.name %></h2>
+          <p><strong>address:</strong> <%= @restaurant.address %></p>
+          <p><strong>category:</strong> <%= @restaurant.category %></p>
+          <p><strong>phone number:</strong> <%= @restaurant.phone_number %></p>
+          <i> <%= link_to "Add review", new_restaurant_review_path(@restaurant), { class: "btn btn-primary" }%> </i>
+        </div>
+      </div>
+    </div>
+  </div>
+        <% @restaurant.reviews.each do |r| %>
+  <div class="card bg-light my-2 mx-2 p-5">
+    <div class="d-flex justify-content-between">
+          <p><%= r.content %> </p>
+          <p><%= '⭐' * r.rating %> </p>
+    </div>
+  </div>
+        <% end %>
+</div>
